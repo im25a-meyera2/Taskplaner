@@ -1,11 +1,22 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 from sqlalchemy import create_engine, text
+from database import engine
 
 app = FastAPI()
 
-DATENBANK_URL = "mysql+pymysql://root:hello12345@localhost/taskplaner"
 
-engine = create_engine(DATENBANK_URL)
+class Item(BaseModel):
+    name: str
+    price: float
+    is_offer: bool
+
+@app.put("/items/{item_id}")
+def update_item(item_id: int, item: Item):
+    return {"item_name": item.name, "item_id": item_id}
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
 
 @app.get("/test")
 def test_verbindung():
