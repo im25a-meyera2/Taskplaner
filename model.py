@@ -9,14 +9,14 @@ class Material(Base):
 
     MaterialID = Column(Integer, primary_key=True, autoincrement=True, index=True, nullable=False)
     Material = Column(String(100), nullable=False)
-    IsAktiv = Column(Boolean, nullable=False, default=True)
+    IstAktiv = Column(Boolean, nullable=False, default=True)
 
 class Kategorie(Base):
     __tablename__ = "Kategorie"
 
     KategorieID = Column(Integer, primary_key=True, autoincrement=True, index=True, nullable=False)
     Kategorie = Column(String(100), nullable=False)
-    IsAktiv = Column(Boolean, nullable=False, default=True)
+    IstAktiv = Column(Boolean, nullable=False, default=True)
 
 class Prioritaet(Base):
     __tablename__ = "Prioritaet"
@@ -42,10 +42,11 @@ class Aufgabe(Base):
 
     AufgabeID = Column(Integer, primary_key=True, autoincrement=True, index=True, nullable=False)
     Titel = Column(String(100), nullable=False)
+    Beginn = Column(DateTime, nullable=False)
     Ende = Column(DateTime, nullable=True)
     Ort = Column(String(250), nullable=True)
     Koordinaten = Column(String(100), nullable=True)
-    Notiz = Column(Text(100), nullable=True)
+    Notiz = Column(Text, nullable=True)
     KategorieID = Column(Integer,ForeignKey("Kategorie.KategorieID"), nullable=False)
     PrioritaetID = Column(Integer,ForeignKey("Prioritaet.PrioritaetID"), nullable=False)
     FortschrittID = Column(Integer, ForeignKey("Fortschritt.FortschrittID"), nullable=False)
