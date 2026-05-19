@@ -1,10 +1,10 @@
+"""This File ist for all the deletes"""
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-import database
 from database import *
 import model
-import schema
 
 router = APIRouter(
     prefix="/delete",
