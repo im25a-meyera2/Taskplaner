@@ -1,11 +1,18 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-from sqlalchemy import create_engine, text
-from database import engine
-app = FastAPI()
+# main.py
+from fastapi import FastAPI, Depends
 
-from router import delete
-app.include_router(delete.router)
+from pydantic import BaseModel
+
+from sqlalchemy import text
+from sqlalchemy.orm import Session
+
+from database import get_db
+from database import engine
+
+
+from router.insert import router as insert_router
+
+app = FastAPI()
 
 
 class Item(BaseModel):
@@ -28,3 +35,18 @@ def test_verbindung():
         return {"nachricht": "SQLAlchemy ist erfolgreich verbunden! 🚀"}
     except Exception as e:
         return {"fehler": f"Klappt noch nicht: {e}"}
+
+# Taskplaner Routen
+
+class Benutzer(BaseModel):
+    benutzer_id: int
+    benutzer_name: str
+    benutzer_pwd: str
+
+
+@app.get("/users")
+def get_users(db: Session = Depends(get_db)):
+    result = db.execute(text("SELECT * FROM Benutzer"))
+    return result.mappings().all()
+
+app.include_router(insert_router)

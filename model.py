@@ -1,3 +1,4 @@
+# model.py
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, Text, ForeignKey, LargeBinary
 from main import engine
 from sqlalchemy.orm import declarative_base, relationship
