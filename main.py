@@ -5,12 +5,14 @@ from pydantic import BaseModel
 
 from sqlalchemy import text
 from sqlalchemy.orm import Session
+from websockets.version import commit
 
 from database import get_db
 from database import engine
 
 
 from router.insert import router as insert_router
+from router.delete import router as delete_router
 
 app = FastAPI()
 
@@ -50,3 +52,4 @@ def get_users(db: Session = Depends(get_db)):
     return result.mappings().all()
 
 app.include_router(insert_router)
+app.include_router(delete_router)
