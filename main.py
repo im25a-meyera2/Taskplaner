@@ -2,8 +2,10 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from sqlalchemy import create_engine, text
 from database import engine
-
 app = FastAPI()
+
+from router import delete
+app.include_router(delete.router)
 
 
 class Item(BaseModel):

@@ -133,3 +133,4 @@ class AufgabeMaterialAntworten(AufgabeMateriallBase):
     AufgabeID: int
 
 
+    
