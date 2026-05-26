@@ -13,6 +13,7 @@ from database import engine
 from router.insert import router as insert_router
 from router.delete import router as delete_router
 from router.update import router as update_router
+from router.select import router as select_router
 
 app = FastAPI()
 
@@ -54,3 +55,4 @@ def get_users(db: Session = Depends(get_db)):
 app.include_router(insert_router)
 app.include_router(delete_router)
 app.include_router(update_router)
+app.include_router(select_router)
