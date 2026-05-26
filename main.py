@@ -52,6 +52,11 @@ def get_users(db: Session = Depends(get_db)):
     result = db.execute(text("SELECT * FROM Benutzer"))
     return result.mappings().all()
 
+@app.get("/materials")
+def get_material(db: Session = Depends(get_db)):
+    result = db.execute(text("SELECT * FROM Material"))
+    return result.mappings().all()
+
 app.include_router(insert_router)
 app.include_router(delete_router)
 app.include_router(update_router)
