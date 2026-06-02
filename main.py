@@ -35,7 +35,7 @@ def test_verbindung():
     try:
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
-        return {"nachricht": "SQLAlchemy ist erfolgreich verbunden! 🚀"}
+        return {"nachricht": "SQLAlchemy ist erfolgreich verbunden!"}
     except Exception as e:
         return {"fehler": f"Klappt noch nicht: {e}"}
 

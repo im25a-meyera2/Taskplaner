@@ -1,10 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from sqlalchemy import text
 import model
 
 from database import get_db
-from schema import BenutzerErstellen, MaterialErstellen, KategorieErstellen
 
 router = APIRouter(
 
@@ -12,7 +10,7 @@ router = APIRouter(
     tags=["Abfragen"]
 )
 
-#Auf einen Datensatz
+# ====================================== Auf einen Datensatz ==========================================
 
 @router.get("/material/{material_id}")
 def get_one_material(material_id: int, db: Session = Depends(get_db)):
