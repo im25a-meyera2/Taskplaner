@@ -40,7 +40,7 @@ def get_one_kategory(kategorie_id: int, db: Session = Depends(get_db)):
 
 @router.get("/prioritaet/{prioritaet_id}")
 def get_one_priority(prioritaet_id: int, db: Session = Depends(get_db)):
-    db_prioritaet = db.query(model.Prioritaet).filter(model.Prioritaet.PriorityID == prioritaet_id).first()
+    db_prioritaet = db.query(model.Prioritaet).filter(model.Prioritaet.PrioritaetID == prioritaet_id).first()
     if db_prioritaet is None:
         raise HTTPException(status_code=404, detail="Prioritaet nicht gefunden")
     return db_prioritaet
