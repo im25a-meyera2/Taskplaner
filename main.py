@@ -14,6 +14,7 @@ from router.insert import router as insert_router
 from router.delete import router as delete_router
 from router.update import router as update_router
 from router.select import router as select_router
+from router.procedures_routes import router as procedures_router
 
 app = FastAPI()
 
@@ -61,3 +62,4 @@ app.include_router(insert_router)
 app.include_router(delete_router)
 app.include_router(update_router)
 app.include_router(select_router)
+app.include_router(procedures_router)
