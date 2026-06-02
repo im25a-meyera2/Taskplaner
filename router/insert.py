@@ -91,7 +91,10 @@ def create_aufgabe(aufgabe: AufgabeErstellen, db: Session = Depends(get_db)):
              INSERT INTO Aufgabe (Titel, Beginn, Ende, Ort, Koordinaten, 
                                   Notiz, KategorieID, PrioritaetID, 
                                   FortschrittID, BenutzerID)
-             VALUES (:titel, :beginn, :ende, :ort, :koordinaten, :notiz,: kategorieid, :prioritaetid, :fortschrittid, :benutzerid)
+                 
+             VALUES (:titel, :beginn, :ende, :ort, :koordinaten, 
+                     :notiz, :kategorieid, :prioritaetid, 
+                     :fortschrittid, :benutzerid)
              """),
         {
             "titel": aufgabe.Titel,

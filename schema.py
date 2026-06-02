@@ -64,7 +64,7 @@ class BenutzerBase(BaseModel):
     class Config:
         from_attributes = True
 
-class BenutzerAnworten(BenutzerBase):
+class BenutzerAntworten(BenutzerBase):
     BenutzerID: int
 
 class BenutzerErstellen(BenutzerBase):
