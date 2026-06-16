@@ -73,10 +73,7 @@ def get_all_task(db: Session = Depends(get_db)):
     .join(model.Fortschritt)\
     .join(model.Prioritaet)\
     .all()
-    counter = 0
-    for aufgabe in db_aufgabe:
-        counter += 1
-    if counter == 0:
+    if not db_aufgabe:
         raise HTTPException(status_code=404, detail="Aufgabe nicht gefunden")
     return db_aufgabe
 

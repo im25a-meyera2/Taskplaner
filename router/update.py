@@ -28,7 +28,7 @@ def update_material(material_id: int, material: schema.MaterialBase, db: Session
 
 @router.put("/kategorie/{kategorie_id}")
 def update_kategorie(kategorie_id: int, kategorie: schema.KategorieBase, db: Session = Depends(get_db)):
-    """This function update the Kategorie"""
+    """This function updates the Kategorie"""
     db_kategorie = db.query(model.Kategorie).filter(model.Kategorie.KategorieID == kategorie_id).first()
     if db_kategorie is None:
         raise HTTPException(status_code=404, detail="Material not found")
