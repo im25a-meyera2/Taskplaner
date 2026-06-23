@@ -17,9 +17,7 @@ router = APIRouter(
 def get_all_material(db: Session = Depends(get_db)):
     db_material = db.query(model.Material).all()
     counter = 0
-    for material in db_material:
-        counter += 1
-    if counter == 0:
+    if not db_material:
         raise HTTPException(status_code=404, detail="Schüler nicht gefunden")
     return db_material
 
@@ -28,10 +26,8 @@ def get_all_material(db: Session = Depends(get_db)):
 def get_all_user(db: Session = Depends(get_db)):
     db_benutzer = db.query(model.Benutzer).all()
     counter = 0
-    for benutzer in db_benutzer:
-        counter += 1
-    if counter == 0:
-        raise HTTPException(status_code=404, detail="Benutzer nicht gefunden")
+    if not db_benutzer:
+        raise HTTPException(status_code=404, detail="Aufgabe nicht gefunden")
     return db_benutzer
 
 
@@ -39,30 +35,24 @@ def get_all_user(db: Session = Depends(get_db)):
 def get_all_kategory(db: Session = Depends(get_db)):
     db_kategorie = db.query(model.Kategorie).all()
     counter = 0
-    for kategorie in db_kategorie:
-        counter += 1
-    if counter == 0:
-        raise HTTPException(status_code=404, detail="Kategorie nicht gefunden")
+    if not db_kategorie:
+        raise HTTPException(status_code=404, detail="Aufgabe nicht gefunden")
     return db_kategorie
 
 @router.get("/prioritaet/alle")
 def get_all_priority(db: Session = Depends(get_db)):
     db_prioritaet = db.query(model.Prioritaet).all()
     counter = 0
-    for prioritaet in db_prioritaet:
-        counter += 1
-    if counter == 0:
-        raise HTTPException(status_code=404, detail="Prioritaet nicht gefunden")
+    if not db_prioritaet:
+        raise HTTPException(status_code=404, detail="Aufgabe nicht gefunden")
     return db_prioritaet
 
 @router.get("/fortschritt/alle")
 def get_all_progress(db: Session = Depends(get_db)):
     db_fortschritt = db.query(model.Fortschritt).all()
     counter = 0
-    for fortschritt in db_fortschritt:
-        counter += 1
-    if counter == 0:
-        raise HTTPException(status_code=404, detail="Fortschritt nicht gefunden")
+    if not db_fortschritt:
+        raise HTTPException(status_code=404, detail="Aufgabe nicht gefunden")
     return db_fortschritt
 
 @router.get("/aufgabe/alle")
@@ -84,10 +74,8 @@ def get_all_taskt_material(db: Session = Depends(get_db)):
     .join(model.Material)\
     .all()
     counter = 0
-    for aufgabe_material in db_aufgabe_material:
-        counter += 1
-    if counter == 0:
-        raise HTTPException(status_code=404, detail="AufgabeMaterial nicht gefunden")
+    if not db_aufgabe_material:
+        raise HTTPException(status_code=404, detail="Aufgabe nicht gefunden")
     return db_aufgabe_material
 
 
@@ -95,10 +83,8 @@ def get_all_taskt_material(db: Session = Depends(get_db)):
 def get_all_file(db: Session = Depends(get_db)):
     db_datei = (db.query(model.Datei).all())
     counter = 0
-    for datei in db_datei:
-        counter += 1
-    if counter == 0:
-        raise HTTPException(status_code=404, detail="Datei nicht gefunden")
+    if not db_datei:
+        raise HTTPException(status_code=404, detail="Aufgabe nicht gefunden")
     return db_datei
 
 # ====================================== Auf einen Datensatz ==========================================

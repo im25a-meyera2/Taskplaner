@@ -31,7 +31,7 @@ def update_kategorie(kategorie_id: int, kategorie: schema.KategorieBase, db: Ses
     """This function updates the Kategorie"""
     db_kategorie = db.query(model.Kategorie).filter(model.Kategorie.KategorieID == kategorie_id).first()
     if db_kategorie is None:
-        raise HTTPException(status_code=404, detail="Material not found")
+        raise HTTPException(status_code=404, detail="Kategorie not found")
 
     db_kategorie.Kategorie = kategorie.Kategorie
     db_kategorie.IstAktiv = kategorie.IstAktiv
